@@ -1,11 +1,13 @@
 import sumar from "./sumador";
-import cajero from "./cajero";
+import Cajero from "./cajero";
 
 const first = document.querySelector("#primer-numero");
 const second = document.querySelector("#segundo-numero");
 const form = document.querySelector("#sumar-form");
 const div = document.querySelector("#resultado-div");
 
+// Cajero
+const cajero = new Cajero() 
 // Monto
 const form_cajero = document.getElementById("cajero-form")
 const monto = document.getElementById("monto-venta")
@@ -24,9 +26,11 @@ form.addEventListener("submit", (event) => {
 // Cajero
 form_cajero.addEventListener("submit", (event) => {
   event.preventDefault();
-  // const monto_valor = Number.parseInt(monto.value)
-
-  cajero_div.innerHTML = "<p>" + cajero(monto.value) + "</p>";
+  if (cajero.agregarMonto(monto.value)){
+    cajero_div.innerHTML = "<p>" + cajero.getMonto() + "</p>";
+  }else{
+    cajero_div.innerHTML = "<p>" + "Ingrese el monto" + "</p>";
+  }
 
   form_cajero.reset()
 })

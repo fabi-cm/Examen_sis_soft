@@ -1,8 +1,22 @@
-function cajero(monto) {
-    if (monto === "" || monto === " "){
-        return "Ingrese un monto"
+class Cajero {
+  constructor() {
+    this.monto_venta = 0;
+    this.efectivo = 0;
+  }
+  getMonto() {
+    return this.monto_venta;
+  }
+  getEfectivo() {
+    return this.efectivo;
+  }
+  agregarMonto(monto) {
+    if (monto !== "") {
+      this.monto_venta = monto;
+      return true;
+    } else {
+      return false;
     }
-    return monto;
+  }
 }
 
-export default cajero;
+export default Cajero;
