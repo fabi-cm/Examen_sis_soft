@@ -1,11 +1,5 @@
-import sumar from "./sumador";
 import Cajero from "./cajero";
-
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
-const div = document.querySelector("#resultado-div");
-
+import sumar from "./sumador"
 // Cajero
 const cajero = new Cajero() 
 // Monto
@@ -13,23 +7,16 @@ const form_cajero = document.getElementById("cajero-form")
 const monto = document.getElementById("monto-venta")
 const cajero_div = document.getElementById("resultado-cajero-div")
 
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
-
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
-});
+// Efectivo
+const efectivo = document.getElementById("efectivo")
 
 // Cajero
 form_cajero.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (cajero.agregarMonto(monto.value)){
-    cajero_div.innerHTML = "<p>" + cajero.getMonto() + "</p>";
+  if (cajero.agregarMonto(monto.value) & cajero.agregarEfectivo(efectivo.value)){
+    cajero_div.innerHTML = "<p> Resultado:" + sumar(cajero.getMonto() + cajero.getEfectivo()) + "</p>";
   }else{
-    cajero_div.innerHTML = "<p>" + "Ingrese el monto" + "</p>";
+    cajero_div.innerHTML = "<p>" + "Ingrese el monto y el efectivo" + "</p>";
   }
 
   form_cajero.reset()
