@@ -17,7 +17,10 @@ describe("Cajero", () => {
     cajero.agregarEfectivo(5);
     expect(cajero.getEfectivo()).toEqual(5);
   });
-  //   it("Si no se ingresa un monto de venta devuelve un mensaje: Ingrese el monto", () => {
-  //     expect(cajero("")).toBe("Ingrese un monto")
-  //   })
+
+  it("NO ingrasar efectivo devuelve un mensaje: Ingrese el efectivo", () => {
+    const cajero = new Cajero();
+    cajero.agregarEfectivo("");
+    expect(cajero.getEfectivo()).toEqual(0);
+  });
 });
