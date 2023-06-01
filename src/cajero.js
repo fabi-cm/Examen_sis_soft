@@ -17,6 +17,14 @@ class Cajero {
       return false;
     }
   }
+  agregarEfectivo(efectivo){
+    if (efectivo !== "") {
+      this.efectivo = efectivo;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export default Cajero;
